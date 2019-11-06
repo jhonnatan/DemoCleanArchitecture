@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  democlean.webapi:
+    image: ${DOCKER_REGISTRY-}democleanarchitecturewebapi
+    build:
+      context: .
+      dockerfile: DemoCleanArchitecture.WebApi/Dockerfile
+    networks:
+      - democleanarchitecture-network
+
+networks: 
+  democleanarchitecture-network:
