@@ -42,7 +42,7 @@ namespace DemoCleanArchitecture.Tests.Cases.WebApi.Controllers.Customer.Get
         [TestPriority(2)]
         public void ShouldGetCustomer()
         {
-            var input = new InputCustomer(CustomerId);
+            var input = new InputCustomer() { CustomerId = CustomerId };
             var controller = new CustomerController(presenter, customerGetUseCase);
             controller.ControllerContext.HttpContext = HttpContextBuilder.New().Build();
 
@@ -54,7 +54,7 @@ namespace DemoCleanArchitecture.Tests.Cases.WebApi.Controllers.Customer.Get
         [TestPriority(2)]
         public void ShouldNotGetCustomerAndReturnNotFound()
         {
-            var input = new InputCustomer(Guid.NewGuid());
+            var input = new InputCustomer() { CustomerId = Guid.NewGuid() };
             var controller = new CustomerController(presenter, customerGetUseCase);
             controller.ControllerContext.HttpContext = HttpContextBuilder.New().Build();
 

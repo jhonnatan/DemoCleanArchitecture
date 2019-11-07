@@ -25,7 +25,7 @@ namespace DemoCleanArchitecture.Tests.Cases.WebApi.Controllers.Customer.Add
         [Fact]
         public void ShouldCreateCustomer()
         {
-            var input = new InputCustomer("CustomerTest", 50, "customer@email.com.br");
+            var input = new InputCustomer() { Name = "CustomerTest", Age = 50, Email = "customer@email.com.br" };
             var controller = new CustomerController(presenter, customerSaveUseCase);
             controller.ControllerContext.HttpContext = HttpContextBuilder.New().Build();
 
@@ -35,8 +35,8 @@ namespace DemoCleanArchitecture.Tests.Cases.WebApi.Controllers.Customer.Add
 
         [Fact]
         public void ShouldNotCreateAndGetError()
-        {            
-            var input = new InputCustomer("", 50, "customer@email.com.br");
+        {
+            var input = new InputCustomer() { Name = "", Age = 50, Email = "customer@email.com.br" };
             var controller = new CustomerController(presenter, customerSaveUseCase);
             controller.ControllerContext.HttpContext = HttpContextBuilder.New().Build();
 

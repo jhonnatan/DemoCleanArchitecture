@@ -42,7 +42,7 @@ namespace DemoCleanArchitecture.Tests.Cases.WebApi.Controllers.Customer.Update
         [TestPriority(2)]
         public void ShouldUpdateCustomer()
         {
-            var input = new InputCustomer(CustomerId, "CustomerTest", 50, "customer@email.com.br");
+            var input = new InputCustomer() { Id = CustomerId, Name = "CustomerTest", Age = 50, Email = "customer@email.com.br" };
             var controller = new CustomerController(presenter, customerSaveUseCase);
             controller.ControllerContext.HttpContext = HttpContextBuilder.New().Build();
 
@@ -54,7 +54,7 @@ namespace DemoCleanArchitecture.Tests.Cases.WebApi.Controllers.Customer.Update
         [TestPriority(2)]
         public void ShouldNotUpdateAndGetError()
         {
-            var input = new InputCustomer(CustomerId, "", 50, "customer@email.com.br");
+            var input = new InputCustomer() { Id = CustomerId, Name = "", Age = 50, Email = "customer@email.com.br" };
             var controller = new CustomerController(presenter, customerSaveUseCase);
             controller.ControllerContext.HttpContext = HttpContextBuilder.New().Build();
 

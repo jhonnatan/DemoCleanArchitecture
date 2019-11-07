@@ -42,7 +42,7 @@ namespace DemoCleanArchitecture.Tests.Cases.WebApi.Controllers.Customer.Delete
         [TestPriority(2)]
         public void ShouldDeleteCustomer()
         {
-            var input = new InputCustomer(CustomerId);
+            var input = new InputCustomer() { CustomerId = CustomerId };
             var controller = new CustomerController(presenter, customerDeleteUseCase);
             controller.ControllerContext.HttpContext = HttpContextBuilder.New().Build();
 
@@ -54,7 +54,7 @@ namespace DemoCleanArchitecture.Tests.Cases.WebApi.Controllers.Customer.Delete
         [TestPriority(2)]
         public void ShouldNotDeleteAndGetError()
         {
-            var input = new InputCustomer(CustomerId);
+            var input = new InputCustomer() { CustomerId = CustomerId };
             var controller = new CustomerController(presenter, customerDeleteUseCase);
             controller.ControllerContext.HttpContext = HttpContextBuilder.New().Build();
 

@@ -1,14 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DemoCleanArchitecture.WebApi.UseCases.Customer.Get
 {
     public class InputCustomer
     {
-        public Guid CustomerId { get; private set; }
-
-        public InputCustomer(Guid customerId)
-        {
-            CustomerId = customerId;
-        }
+        [Required]
+        public Guid CustomerId { get; set; }        
     }
 }

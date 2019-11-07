@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DemoCleanArchitecture.WebApi.UseCases.Customer
 {
@@ -32,7 +33,7 @@ namespace DemoCleanArchitecture.WebApi.UseCases.Customer
         public void Standard(IList<Domain.Customer.Customer> customer)
         {
             var customersResponse = new List<CustomerResponse>();
-            customersResponse.ForEach(s => customersResponse.Add(new CustomerResponse(s.Id, s.Name, s.Age, s.Email)));
+            customer.ToList().ForEach(s => customersResponse.Add(new CustomerResponse(s.Id, s.Name, s.Age, s.Email)));
             ViewModel = new OkObjectResult(customersResponse);
         }
     }
