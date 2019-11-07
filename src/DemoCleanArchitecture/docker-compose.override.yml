@@ -5,10 +5,11 @@ services:
     environment:
       DEMOCLEAN_CONN: Host=democlean.database;Port=5432;Database=DemoClean;User Id=postgres;Password=postgres;
     ports:
-      - "54157:80"
-      - "44344:443"
+      - 8081:80      
     networks:
       - democleanarchitecture-network
+    depends_on:
+      - democlean.database
 
   democlean.database:
     image: postgres:9.5

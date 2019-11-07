@@ -14,6 +14,7 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Rewrite;
+using DemoCleanArchitecture.WebApi.Modules;
 
 [assembly: ApiConventionType(typeof(ApiConventions))]
 namespace DemoCleanArchitecture.WebApi
@@ -33,22 +34,7 @@ namespace DemoCleanArchitecture.WebApi
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
-        {
-            /*var builder = new ContainerBuilder();
-
-            services.AddJwtToken();
-            services.Cors();
-            services.Swagger();
-            services.AddLocalization();
-            services.AddProblemDetails();
-            services.AddFilters();
-
-            builder.AddAutofacRegistration();
-            builder.Populate(services);
-
-            var container = builder.Build();            
-
-            return new AutofacServiceProvider(container);*/
+        {            
             services.AddMvc();            
 
             services.AddSwaggerDocument(document =>
@@ -73,15 +59,10 @@ namespace DemoCleanArchitecture.WebApi
                 };
             });
 
-
-            var builder = new ContainerBuilder();
-
-            
-            //builder.RegisterModule<Infrastructure.Modules.Module>();
+            var builder = new ContainerBuilder();                      
             builder.RegisterModule<ApplicationModule>();
             builder.RegisterModule<InfrastructureDefaultModule>();
-            //builder.RegisterModule<WebApiModule>();
-
+            builder.RegisterModule<WebApiModule>();
             builder.Populate(services);
 
             var container = builder.Build();
@@ -89,44 +70,16 @@ namespace DemoCleanArchitecture.WebApi
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            /*var serviceProvider = app.ApplicationServices;
-            var resouces = serviceProvider.GetService<IStringLocalizer<Resources.ReturnMessages>>();
-
+        {            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
-
-            app.UseCors();            
-            app.AddLocalization();
-            app.UseProblemDetails();
-            app.UseExceptionHandler(new ExceptionHandlerOptions
-            {
-                ExceptionHandler = new ErrorHandlerMiddleware(env, resouces).Invoke
-            });
-
-            app.UseAuthentication();
-            app.Swagger();
-            app.AddOptions();            
-            //app.UseMvc();
-            */
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+            }            
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
             
-
             app.UseOpenApi(config =>
             {
                 config.PostProcess = (document, request) =>
@@ -143,8 +96,7 @@ namespace DemoCleanArchitecture.WebApi
             var option = new RewriteOptions();
             option.AddRedirect("^$", "swagger");
 
-            app.UseRewriter(option);
-            //app.UseMvc();
+            app.UseRewriter(option);            
         }
 
         private string ExtractHost(HttpRequest request) =>
