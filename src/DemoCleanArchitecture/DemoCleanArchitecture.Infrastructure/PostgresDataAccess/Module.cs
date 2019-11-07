@@ -17,7 +17,7 @@ namespace DemoCleanArchitecture.Infrastructure.PostgresDataAccess
                 .Where(type => type.Namespace.Contains("PostgresDataAccess"))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
-
+            
             builder.RegisterAssemblyTypes(typeof(InfrastructureException).Assembly)
                 .Where(t => t.Namespace.Contains("PostgresDataAccess") && typeof(Profile).IsAssignableFrom(t) && !t.IsAbstract && t.IsPublic)
                 .As<Profile>();
@@ -45,6 +45,7 @@ namespace DemoCleanArchitecture.Infrastructure.PostgresDataAccess
                     //ContextInitializer.Seed(context);
                 }
             }
+            
         }
     }
 }

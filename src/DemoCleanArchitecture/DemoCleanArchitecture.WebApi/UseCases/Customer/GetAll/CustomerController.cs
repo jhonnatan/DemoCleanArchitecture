@@ -15,7 +15,7 @@ namespace DemoCleanArchitecture.WebApi.UseCases.Customer.GetAll
         {
             this.presenter = presenter;
             this.customerGetAllUseCase = customerGetAllUseCase;
-        }
+        }        
 
         [HttpPost]
         [Route("GetAllCustomer")]
