@@ -15,11 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoCleanArchitecture.Tests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migration", "Migration", "{0947819D-6C15-4D0B-867A-9A32013D0EDC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoCleanArchitecture.Migration", "DemoCleanArchitecture.Migration\DemoCleanArchitecture.Migration.csproj", "{36820081-67C8-4DEB-A8FF-E781FECD10EE}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{21EF6FA5-2872-4972-9392-812CA2EAFD2A}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2DF50759-50BA-4A89-94C7-DDDDFC34E650}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCleanArchitecture.Migration", "..\DemoCleanArchitecture.Migration\DemoCleanArchitecture.Migration.csproj", "{62EC4C2B-547A-44FA-AAEB-FB4B1ECA6FCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,21 +47,21 @@ Global
 		{2623821A-1E18-433B-9E5A-09B3227B6BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2623821A-1E18-433B-9E5A-09B3227B6BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2623821A-1E18-433B-9E5A-09B3227B6BE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36820081-67C8-4DEB-A8FF-E781FECD10EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36820081-67C8-4DEB-A8FF-E781FECD10EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36820081-67C8-4DEB-A8FF-E781FECD10EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36820081-67C8-4DEB-A8FF-E781FECD10EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2DF50759-50BA-4A89-94C7-DDDDFC34E650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2DF50759-50BA-4A89-94C7-DDDDFC34E650}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DF50759-50BA-4A89-94C7-DDDDFC34E650}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DF50759-50BA-4A89-94C7-DDDDFC34E650}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62EC4C2B-547A-44FA-AAEB-FB4B1ECA6FCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62EC4C2B-547A-44FA-AAEB-FB4B1ECA6FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62EC4C2B-547A-44FA-AAEB-FB4B1ECA6FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62EC4C2B-547A-44FA-AAEB-FB4B1ECA6FCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2623821A-1E18-433B-9E5A-09B3227B6BE7} = {21EF6FA5-2872-4972-9392-812CA2EAFD2A}
-		{36820081-67C8-4DEB-A8FF-E781FECD10EE} = {0947819D-6C15-4D0B-867A-9A32013D0EDC}
+		{62EC4C2B-547A-44FA-AAEB-FB4B1ECA6FCA} = {0947819D-6C15-4D0B-867A-9A32013D0EDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25A16E6C-7C9F-4AE7-8331-73EB278B9660}
