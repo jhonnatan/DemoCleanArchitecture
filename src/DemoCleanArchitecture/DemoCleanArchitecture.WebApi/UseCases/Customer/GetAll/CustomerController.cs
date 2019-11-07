@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DemoCleanArchitecture.WebApi.UseCases.Customer.GetAll
 {
-    //[Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
@@ -15,8 +15,7 @@ namespace DemoCleanArchitecture.WebApi.UseCases.Customer.GetAll
         {
             this.presenter = presenter;
             this.customerGetAllUseCase = customerGetAllUseCase;
-        }
-        
+        }        
 
         [HttpPost]
         [Route("GetAllCustomer")]
