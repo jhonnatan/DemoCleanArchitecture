@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using DemoCleanArchitecture.WebApi.UseCases.Customer;
 
 namespace DemoCleanArchitecture.WebApi.Modules
 {
@@ -7,7 +8,9 @@ namespace DemoCleanArchitecture.WebApi.Modules
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(typeof(Startup).Assembly)
-                .InstancePerLifetimeScope();
+                .AsSelf().InstancePerLifetimeScope();
+
+            builder.RegisterType<CustomerPresenter>().As<Application.Boundaries.Customer.IOutputPort>().AsSelf().InstancePerLifetimeScope();
         }
     }
 }

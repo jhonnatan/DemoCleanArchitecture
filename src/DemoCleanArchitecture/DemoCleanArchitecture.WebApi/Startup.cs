@@ -35,8 +35,8 @@ namespace DemoCleanArchitecture.WebApi
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {            
-            services.AddMvc();            
-
+            services.AddControllers();
+            
             services.AddSwaggerDocument(document =>
             {
                 document.Title = "DemoCleanArchitecture";
@@ -61,6 +61,7 @@ namespace DemoCleanArchitecture.WebApi
 
             var builder = new ContainerBuilder();                      
             builder.RegisterModule<ApplicationModule>();
+            builder.RegisterModule<Infrastructure.PostgresDataAccess.Module>();
             builder.RegisterModule<InfrastructureDefaultModule>();
             builder.RegisterModule<WebApiModule>();
             builder.Populate(services);
@@ -74,7 +75,14 @@ namespace DemoCleanArchitecture.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }            
+            }
+            
+            app.UseRouting();            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
@@ -90,13 +98,13 @@ namespace DemoCleanArchitecture.WebApi
                 };
             });
 
-            app.UseSwaggerUi3(config => config.TransformToExternalPath = (route, request) => ExtractPath(request) + route);
-
+            app.UseSwaggerUi3(config => config.TransformToExternalPath = (route, request) => ExtractPath(request) + route);            
             //Redireciona swagger como pagina inicial
             var option = new RewriteOptions();
             option.AddRedirect("^$", "swagger");
 
-            app.UseRewriter(option);            
+            app.UseRewriter(option);
+
         }
 
         private string ExtractHost(HttpRequest request) =>
@@ -107,7 +115,7 @@ namespace DemoCleanArchitecture.WebApi
         private string ExtractProto(HttpRequest request) =>
             request.Headers["X-Forwarded-Proto"].FirstOrDefault() ?? request.Protocol;
 
-        private string ExtractPath(HttpRequest request) =>
+        private string ExtractPath(HttpRequest request) =>            
             request.Headers.ContainsKey("X-Forwarded-Prefix") ?
                 request.Headers["X-Forwarded-Prefix"].FirstOrDefault() :
                 string.Empty;
