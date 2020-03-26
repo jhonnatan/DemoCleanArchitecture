@@ -12,9 +12,10 @@ services:
        DEMOCLEAN_CONN: Host=democlean.database;Port=5432;Database=DemoClean;User Id=postgres;Password=postgres;
     volumes:
       - ../DemoCleanArchitecture:/src
-      #- ../../../.vsdbg/vsdbg-linux-x64:/root/vsdbg # If you wants use off-line degger, uncomment this line
+      #- ../../../:/root/debug
+      - ../:/root/debug
     ports:
-      - 5000:5000    
+      - 5000:5000
     networks:
       - democleanarchitecture-network
     depends_on:

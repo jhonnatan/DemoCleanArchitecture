@@ -8,7 +8,8 @@
             "name": ".NET Core Docker Attach",
             "type": "coreclr",
             "request": "attach",
-            "processId": "${command:pickRemoteProcess}",            
+            "processId": "${command:pickRemoteProcess}",
+            "preLaunchTask": "Install Vsdbg",     
             "pipeTransport": {
                 "pipeProgram": "docker",
                 "pipeArgs": [
@@ -16,7 +17,8 @@
                     "-i",
                     "democleanwebapi" // Nome do container
                 ],
-                "debuggerPath": "/root/vsdbg/vsdbg", // Localização do debugger dentro do container
+                //"debuggerPath": "/root/vsdbg/vsdbg", // Localização do debugger dentro do container
+                "debuggerPath": "/root/debug/vsdbg/vsdbg",
                 "pipeCwd": "${workspaceRoot}/DemoCleanArchitecture.WebApi", // Caminho do projeto no vscode
                 "quoteArgs": false
             },
