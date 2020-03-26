@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Docker Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickRemoteProcess}",            
+            "pipeTransport": {
+                "pipeProgram": "docker",
+                "pipeArgs": [
+                    "exec",
+                    "-i",
+                    "democleanwebapi" // Nome do container
+                ],
+                "debuggerPath": "/root/vsdbg/vsdbg", // Localização do debugger dentro do container
+                "pipeCwd": "${workspaceRoot}/DemoCleanArchitecture.WebApi", // Caminho do projeto no vscode
+                "quoteArgs": false
+            },
+            "sourceFileMap": {
+                "/src": "${workspaceRoot}" // Vinculo do projeto no container e no vscode                
+            }            
+        }
+    ]
+}

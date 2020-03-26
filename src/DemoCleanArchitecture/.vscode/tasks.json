@@ -1,0 +1,60 @@
+{
+    "tasks": [
+        {
+            "type": "docker-build",
+            "label": "docker-build: debug",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "democleanwebapi:dev",
+                "target": "base",
+                "dockerfile": "${workspaceFolder}/DemoCleanArchitecture.WebApi/vscode.dockerfile",
+                "context": "${workspaceFolder}/DemoCleanArchitecture.WebApi/DemoCleanArchitecture.WebApi.csproj",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/DemoCleanArchitecture.WebApi/DemoCleanArchitecture.WebApi.csproj"
+            }
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: release",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "democleanwebapi:latest",
+                "dockerfile": "${workspaceFolder}/DemoCleanArchitecture.WebApi/vscode.dockerfile",
+                "context": "${workspaceFolder}/DemoCleanArchitecture.WebApi",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/DemoCleanArchitecture.WebApi/DemoCleanArchitecture.WebApi.csproj"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: debug",
+            "dependsOn": [
+                "docker-build: debug"
+            ],
+            "dockerRun": {},
+            "netCore": {
+                "appProject": "${workspaceFolder}/DemoCleanArchitecture.WebApi/DemoCleanArchitecture.WebApi.csproj",
+                "enableDebugging": true
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: release",
+            "dependsOn": [
+                "docker-build: release"
+            ],
+            "dockerRun": {},
+            "netCore": {
+                "appProject": "${workspaceFolder}/DemoCleanArchitecture.WebApi/DemoCleanArchitecture.WebApi.csproj"
+            }
+        }
+    ]
+}
