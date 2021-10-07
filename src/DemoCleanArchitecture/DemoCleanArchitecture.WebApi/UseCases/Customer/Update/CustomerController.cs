@@ -18,7 +18,7 @@ namespace DemoCleanArchitecture.WebApi.UseCases.Customer.Update
         }
 
         [HttpPut]
-        [Route("UpdateCustomer")]
+        [Route("Update")]
         [ProducesResponseType(typeof(Guid), 200)]
         [ProducesResponseType(typeof(ProblemDetails), 400)]
         public IActionResult UpdateCustomer([FromBody] InputCustomer input)

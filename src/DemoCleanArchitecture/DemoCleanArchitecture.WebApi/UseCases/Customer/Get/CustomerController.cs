@@ -17,7 +17,7 @@ namespace DemoCleanArchitecture.WebApi.UseCases.Customer.Get
         }
 
         [HttpPost]
-        [Route("GetCustomer")]
+        [Route("GetById")]
         [ProducesResponseType(typeof(CustomerResponse), 200)]
         [ProducesResponseType(typeof(ProblemDetails), 400)]
         public IActionResult GetCustomer([FromBody] InputCustomer input)

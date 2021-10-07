@@ -18,7 +18,7 @@ namespace DemoCleanArchitecture.WebApi.UseCases.Customer.GetAll
         }        
 
         [HttpPost]
-        [Route("GetAllCustomer")]
+        [Route("GetAll")]
         [ProducesResponseType(typeof(List<CustomerResponse>), 200)]
         [ProducesResponseType(typeof(ProblemDetails), 400)]
         public IActionResult GetAllCustomers()

@@ -18,7 +18,7 @@ namespace DemoCleanArchitecture.WebApi.UseCases.Customer.Add
         }
 
         [HttpPost]        
-        [Route("CreateCustomer")]
+        [Route("Create")]
         [ProducesResponseType(typeof(Guid), 200)]
         [ProducesResponseType(typeof(ProblemDetails), 400)]
         public IActionResult CreateCustomer([FromBody] InputCustomer input)

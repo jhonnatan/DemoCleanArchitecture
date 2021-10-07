@@ -18,7 +18,7 @@ namespace DemoCleanArchitecture.WebApi.UseCases.Customer.Delete
         }
 
         [HttpDelete]
-        [Route("DeleteCustomer")]
+        [Route("Delete")]
         [ProducesResponseType(typeof(Guid), 200)]
         [ProducesResponseType(typeof(ProblemDetails), 400)]
         public IActionResult DeleteCustomer([FromBody] InputCustomer input)
