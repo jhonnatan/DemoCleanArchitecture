@@ -23,4 +23,8 @@
     <ProjectReference Include="..\DemoCleanArchitecture.WebApi\DemoCleanArchitecture.WebApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Cases\Domain\Bank\" />
+  </ItemGroup>
+
 </Project>
