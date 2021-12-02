@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UseCases\NovaPasta\**" />
+    <EmbeddedResource Remove="UseCases\NovaPasta\**" />
+    <None Remove="UseCases\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DemoCleanArchitecture.Domain\DemoCleanArchitecture.Domain.csproj" />
   </ItemGroup>
 

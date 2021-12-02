@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using DemoCleanArchitecture.WebApi.UseCases.Bank;
 using DemoCleanArchitecture.WebApi.UseCases.Customer;
 
 namespace DemoCleanArchitecture.WebApi.Modules
@@ -11,6 +12,8 @@ namespace DemoCleanArchitecture.WebApi.Modules
                 .AsSelf().InstancePerLifetimeScope();
 
             builder.RegisterType<CustomerPresenter>().As<Application.Boundaries.Customer.IOutputPort>().AsSelf().InstancePerLifetimeScope();
+
+            builder.RegisterType<BankPresenter>().As<Application.Boundaries.Bank.IOutputPort>().AsSelf().InstancePerLifetimeScope();
         }
     }
 }

@@ -7,6 +7,9 @@ namespace DemoCleanArchitecture.Infrastructure.PostgresDataAccess.AutoMapperProf
         public InfraDomainProfile()
         {
             CreateMap<Entities.Customer.Customer, Domain.Customer.Customer>().ReverseMap();
+
+            CreateMap<Entities.Bank.Bank, Domain.Bank.Bank>().ReverseMap();
+
         }
     }
 }

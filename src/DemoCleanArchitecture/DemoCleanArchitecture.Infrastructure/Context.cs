@@ -3,12 +3,15 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using DemoCleanArchitecture.Infrastructure.PostgresDataAccess.Entities.Bank;
 
 namespace DemoCleanArchitecture.Infrastructure
 {
     public class Context : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Bank> Banks { get; set; } 
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
