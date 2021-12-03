@@ -49,5 +49,10 @@ namespace DemoCleanArchitecture.Tests.Builders
         {
             return new Customer(Id, Name, Age, Email);
         }
+
+        internal object WithNumber(string number)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

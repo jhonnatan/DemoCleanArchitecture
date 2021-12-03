@@ -34,9 +34,9 @@ namespace DemoCleanArchitecture.WebApi
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
-        {            
+        {
             services.AddControllers();
-            
+
             services.AddSwaggerDocument(document =>
             {
                 document.Title = "DemoCleanArchitecture";
@@ -59,7 +59,7 @@ namespace DemoCleanArchitecture.WebApi
                 };
             });
 
-            var builder = new ContainerBuilder();                      
+            var builder = new ContainerBuilder();
             builder.RegisterModule<ApplicationModule>();
             builder.RegisterModule<Infrastructure.PostgresDataAccess.Module>();
             builder.RegisterModule<InfrastructureDefaultModule>();
@@ -71,13 +71,13 @@ namespace DemoCleanArchitecture.WebApi
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {            
+        {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-            app.UseRouting();            
+
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -87,7 +87,7 @@ namespace DemoCleanArchitecture.WebApi
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
-            
+
             app.UseOpenApi(config =>
             {
                 config.PostProcess = (document, request) =>
@@ -98,7 +98,7 @@ namespace DemoCleanArchitecture.WebApi
                 };
             });
 
-            app.UseSwaggerUi3(config => config.TransformToExternalPath = (route, request) => ExtractPath(request) + route);            
+            app.UseSwaggerUi3(config => config.TransformToExternalPath = (route, request) => ExtractPath(request) + route);
             //Redireciona swagger como pagina inicial
             var option = new RewriteOptions();
             option.AddRedirect("^$", "swagger");
@@ -115,7 +115,7 @@ namespace DemoCleanArchitecture.WebApi
         private string ExtractProto(HttpRequest request) =>
             request.Headers["X-Forwarded-Proto"].FirstOrDefault() ?? request.Protocol;
 
-        private string ExtractPath(HttpRequest request) =>            
+        private string ExtractPath(HttpRequest request) =>
             request.Headers.ContainsKey("X-Forwarded-Prefix") ?
                 request.Headers["X-Forwarded-Prefix"].FirstOrDefault() :
                 string.Empty;
