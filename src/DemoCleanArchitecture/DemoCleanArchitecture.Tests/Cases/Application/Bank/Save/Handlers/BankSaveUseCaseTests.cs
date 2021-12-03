@@ -11,13 +11,13 @@ namespace DemoCleanArchitecture.Tests.Cases.Application.Bank.Save
 {
     [UseAutofacTestFramework]
     [TestCaseOrderer("DemoCleanArchitecture.Tests.TestCaseOrdering.PriorityOrderer", "DemoCleanArchitecture.Tests")]
-    public class CustomerSaveUseCaseTests
+    public class BankSaveUseCaseTests
     {
         private readonly IBankSaveUseCase bankSaveUseCase;
         private readonly BankPresenter presenter;
         private static Guid BankId;
 
-        public CustomerSaveUseCaseTests(IBankSaveUseCase bankSaveUseCase, BankPresenter presenter)
+        public BankSaveUseCaseTests(IBankSaveUseCase bankSaveUseCase, BankPresenter presenter)
         {
             this.bankSaveUseCase = bankSaveUseCase;
             this.presenter = presenter;
@@ -25,7 +25,7 @@ namespace DemoCleanArchitecture.Tests.Cases.Application.Bank.Save
 
         [Fact]
         [TestPriority(1)]
-        public void ShouldAddNewCustomerAndReturnOK()
+        public void ShouldAddNewBankAndReturnOK()
         {
             var request = new BankSaveRequest("BankTest", "818181818181");
             BankId = request.Bank.Id;
@@ -35,15 +35,15 @@ namespace DemoCleanArchitecture.Tests.Cases.Application.Bank.Save
 
         [Fact]
         [TestPriority(2)]
-        public void ShouldUpdateCustomerAndReturnOK()
+        public void ShouldUpdateBankAndReturnOK()
         {
-            var request = new BankSaveRequest(BankId, "CustomerTestUpdated", "8181818181");
+            var request = new BankSaveRequest(BankId, "BankTestUpdated", "8181818181");
             bankSaveUseCase.Execute(request);
             presenter.ViewModel.Should().BeOfType<OkObjectResult>();
         }
 
         [Fact]
-        public void ShouldNotAddNewCustomerAndReturnError()
+        public void ShouldNotAddNewBankAndReturnError()
         {
             var request = new BankSaveRequest("", "818181818181");
             bankSaveUseCase.Execute(request);

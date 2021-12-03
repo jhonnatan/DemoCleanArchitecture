@@ -3,7 +3,7 @@ using System;
 using Xunit;
 using FluentAssertions;
 
-namespace DemoCleanArchitecture.Tests.Cases.Domain.Customer
+namespace DemoCleanArchitecture.Tests.Cases.Domain.Bank
 {
     public class BankTests
     {
@@ -49,13 +49,13 @@ namespace DemoCleanArchitecture.Tests.Cases.Domain.Customer
             "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet")]
         public void ShouldNotCreateDomainWithNameLengthBiggerThan200(string name)
         {
-            var model = CustomerBuilder.New().WithName(name).Build();
+            var model = BankBuilder.New().WithName(name).Build();
             model.IsValid.Should().BeFalse();
         }
 
         [Theory]
         [InlineData("Lorem ipsum dolor sit amet Lorem ipsum dolor ")]
-        public void ShouldNotCreateDomainWithEmailLengthBiggerThan20(string number)
+        public void ShouldNotCreateDomainWithNumberLengthBiggerThan200(string number)
         {
             var model = BankBuilder.New().WithEmail(number).Build();
             model.IsValid.Should().BeFalse();

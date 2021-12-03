@@ -33,12 +33,10 @@ namespace DemoCleanArchitecture.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PostgresDataAccess.Entities.Map.Customer.CustomerMap());
-            modelBuilder.Ignore<ValidationResult>();
-            base.OnModelCreating(modelBuilder);
-
             modelBuilder.ApplyConfiguration(new PostgresDataAccess.Entities.Map.Bank.BankMap());
             modelBuilder.Ignore<ValidationResult>();
             base.OnModelCreating(modelBuilder);
+           
         }
     }
 }

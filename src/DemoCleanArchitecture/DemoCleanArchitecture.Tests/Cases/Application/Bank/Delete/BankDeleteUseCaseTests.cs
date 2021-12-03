@@ -29,7 +29,7 @@ namespace DemoCleanArchitecture.Tests.Cases.Application.Customer.Delete
 
         [Fact]
         [TestPriority(1)]
-        public void ShouldAddSomeCustomer()
+        public void ShouldAddSomeBank()
         {
             var model = BankBuilder.New().Build();
             BankId = model.Id;
@@ -39,7 +39,7 @@ namespace DemoCleanArchitecture.Tests.Cases.Application.Customer.Delete
 
         [Fact]
         [TestPriority(2)]
-        public void ShouldDeleteCustomer()
+        public void ShouldDeleteBank()
         {
             var request = new BankDeleteRequest(BankId);
             bankDeleteUseCase.Execute(request);
@@ -48,7 +48,7 @@ namespace DemoCleanArchitecture.Tests.Cases.Application.Customer.Delete
 
         [Fact]
         [TestPriority(2)]
-        public void ShouldDeleteCustomerAndReturnError()
+        public void ShouldDeleteBankAndReturnError()
         {
             var request = new BankDeleteRequest(Guid.NewGuid());
             bankDeleteUseCase.Execute(request);

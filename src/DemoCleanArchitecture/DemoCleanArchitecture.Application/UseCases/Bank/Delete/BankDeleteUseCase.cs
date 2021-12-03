@@ -22,7 +22,7 @@ namespace DemoCleanArchitecture.Application.UseCases.Bank.Delete
                 var ret = BankWriteOnlyRepository.Delete(request.BankId);
                 if (ret == 0)
                 {
-                    output.Error($"Error on process Delete Customer");
+                    output.Error($"Error on process Delete Bank");
                     return;
                 }
                 output.Standard(request.BankId);
