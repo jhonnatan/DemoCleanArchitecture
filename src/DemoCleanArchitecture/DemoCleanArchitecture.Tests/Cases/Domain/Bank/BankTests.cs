@@ -54,8 +54,9 @@ namespace DemoCleanArchitecture.Tests.Cases.Domain.Bank
         }
 
         [Theory]
-        [InlineData("Lorem ipsum dolor sit amet Lorem ipsum dolor ")]
-        public void ShouldNotCreateDomainWithNumberLengthBiggerThan200(string number)
+        [InlineData("Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet " +
+            "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ")]
+        public void ShouldNotCreateDomainWithNumberLeghtBiggerThan200(string number)
         {
             var model = BankBuilder.New().WithEmail(number).Build();
             model.IsValid.Should().BeFalse();
