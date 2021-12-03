@@ -1,4 +1,5 @@
 ﻿using DemoCleanArchitecture.Infrastructure.PostgresDataAccess.Entities.Customer;
+using DemoCleanArchitecture.Infrastructure.PostgresDataAccess.Entities.Bank;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace DemoCleanArchitecture.Infrastructure
     public class Context : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Bank> Banks { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,6 +32,7 @@ namespace DemoCleanArchitecture.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PostgresDataAccess.Entities.Map.Customer.CustomerMap());
+            modelBuilder.ApplyConfiguration(new PostgresDataAccess.Entities.Map.Bank.BankMap());
             modelBuilder.Ignore<ValidationResult>();
             base.OnModelCreating(modelBuilder);
         }

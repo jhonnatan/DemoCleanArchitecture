@@ -3,9 +3,9 @@ using System;
 
 namespace DemoCleanArchitecture.Domain.Validator
 {
-    public class CustomerValidator : AbstractValidator<Customer.Customer>
+    public class BankValidator : AbstractValidator<Bank.Bank>
     {
-        public CustomerValidator()
+        public BankValidator()
         {
             RuleFor(r => r.Id)
                 .NotNull()
@@ -16,14 +16,10 @@ namespace DemoCleanArchitecture.Domain.Validator
                 .NotEmpty()
                 .MaximumLength(200);
 
-            RuleFor(r => r.Age)
-                .NotNull()
-                .GreaterThan(0);
-
-            RuleFor(r => r.Email)
+            RuleFor(r => r.Number)
                 .NotNull()
                 .NotEmpty()
-                .MaximumLength(100);
+                .MaximumLength(200);
         }
     }
 }
