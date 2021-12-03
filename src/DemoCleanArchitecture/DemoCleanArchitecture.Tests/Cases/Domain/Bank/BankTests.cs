@@ -55,10 +55,10 @@ namespace DemoCleanArchitecture.Tests.Cases.Domain.Bank
 
         [Theory]
         [InlineData("Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet " +
-            "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ")]
+            "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet")]
         public void ShouldNotCreateDomainWithNumberLeghtBiggerThan200(string number)
         {
-            var model = BankBuilder.New().WithEmail(number).Build();
+            var model = BankBuilder.New().WithNumber(number).Build();
             model.IsValid.Should().BeFalse();
         }
 

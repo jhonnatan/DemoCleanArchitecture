@@ -31,7 +31,7 @@ namespace DemoCleanArchitecture.Tests.Builders
             return this;
         }
 
-        public BankBuilder WithEmail(string number)
+        public BankBuilder WithNumber(string number)
         {
             Number = number;
             return this;
@@ -42,9 +42,5 @@ namespace DemoCleanArchitecture.Tests.Builders
             return new Bank(Id, Name, Number);
         }
 
-        internal object WithNumber(object number)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
